@@ -100,9 +100,9 @@ public class NQueensGUI extends JFrame {
         statsLabel = new JLabel();
         statsLabel.setHorizontalAlignment(JLabel.CENTER);
         statsLabel.setVerticalAlignment(JLabel.CENTER);
-        updateStats("Total Items: 1000<br>Processed Items: 500<br>Remaining Items: 500<br>Success Rate: 50%");
+        updateStats(" welcome <br> chose a problem size <br> and the search technique");
         add(statsLabel, BorderLayout.EAST);
-        statsLabel.setMaximumSize(new Dimension(200,getSize().width));
+        statsLabel.setMaximumSize(new Dimension(200,200));
     }
     
     private void createBoardPanel() {
