@@ -23,9 +23,15 @@ public class NQueensSolver {
         if (algo == "A* h2") {
             r = aStar(2);
         }
+        if (algo == "GA") {
+            NQueensGA GA_solver = new NQueensGA(this.N, 1000,0.5,0.03,40);
+            this.board = GA_solver.run();
+            System.out.println(Arrays.toString(board) + GA_solver.getState());
+            return new Sol(GA_solver.getState(), board);
+        }
         if (algo == "PSO") {
             NQueensPSO pso_solver = new NQueensPSO(this.N, 100);
-            this.board = pso_solver.run(1000000);
+            this.board = pso_solver.run(10000);
             System.out.println(Arrays.toString(board) + pso_solver.getState());
             return new Sol(pso_solver.getState(), board);
         }
@@ -238,10 +244,30 @@ class Sol {
 
     public Sol(int flag, int[] board) {
         this.flag = flag;
-        this.logmsg = "," + flag;
-
-        this.msg = "Done";
         this.board = board;
+        if(flag==0){
+        this.logmsg = "," + flag;
+        this.msg = "Done";
+        
+    }
+        else{
+            {
+            
+            
+            int x = 0;
+            for (int i = 0; i < this.board.length; i++) {
+                for (int j = i + 1; j < this.board.length; j++) {
+                    if ((this.board[i] == this.board[j] || Math.abs(this.board[i] - this.board[j]) == Math.abs(i - j))&&(this.board[j]>=0)) {
+                        this.board[j]=-(this.board[j]+1);
+                    }
+                }
+            }
+            for (int i : this.board){if (i<0){x++;}}
+            this.logmsg = "," + flag+"," +(this.board.length-x);
+            this.msg = "the best found<br>insert: "+(this.board.length-x)+"-Queens";
+        }
+        }
+        
     }
 
 }

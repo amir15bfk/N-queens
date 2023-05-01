@@ -46,7 +46,7 @@ public class NQueensGUI extends JFrame {
         topPanel.add(sizeComboBox);
         topPanel.add(new JLabel("algo: "));
 
-        String[] algo = { "DFS", "BFS", "A* h1", "A* h2", "PSO" };
+        String[] algo = { "DFS", "BFS", "A* h1", "A* h2","GA", "PSO" };
         algoComboBox = new JComboBox<>(algo);
         algoComboBox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -139,11 +139,18 @@ public class NQueensGUI extends JFrame {
                 int queenCol = solution[i];
                 for (int j = 0; j < N; j++) {
                     JButton button = new JButton();
+                    if(j==(-queenCol-1)){
+                        queenCol=-queenCol-1;
+                        button.setBackground(Color.RED);
+                    }else {
+                        if(j==queenCol){
+                            button.setBackground(Color.green);
+                        }else{
                     if ((i + j) % 2 == 0) {
                         button.setBackground(Color.WHITE);
                     } else {
                         button.setBackground(Color.GRAY);
-                    }
+                    }}}
                     if (j == queenCol) {
 
                         ImageIcon queenIcon = new ImageIcon("queensii.png");

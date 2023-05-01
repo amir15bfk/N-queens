@@ -25,7 +25,7 @@ public class NQueensPSO {
         if (Particale.getBest().getScore() == 1)
             return 0;
         else
-            return 1;
+            return 2;
     }
 
 }
@@ -64,6 +64,7 @@ class Particale {
         for (int i = 0; i < number_workers; i++) {
             new Particale();
         }
+        globalUpdate();
     }
 
     public Particale() {
@@ -72,13 +73,13 @@ class Particale {
         this.position = new Point(N, N);
         this.private_best = new Point(this.position.getVectorCopy());
         this.velocities = new Point(N, (int) (N / 2));
-        this.globalUpdate();
     }
 
     public static void updateAll() {
         for (Particale p : list_of_particales) {
             p.update();
         }
+        globalUpdate();
     }
 
     public void update() {
@@ -90,16 +91,16 @@ class Particale {
     }
 
     public void privateUpdate() {
-        if (this.private_best.getScore() < position.getScore()) {
+        if (this.private_best.getScore() < this.position.getScore()) {
             this.private_best = new Point(this.position.getVectorCopy());
         }
-        globalUpdate();
     }
 
-    public void globalUpdate() {
-        if (global_best.getScore() < this.position.getScore()) {
-            global_best = new Point(this.position.getVectorCopy());
-        }
+    public static void globalUpdate() {
+        for (Particale p : list_of_particales) {
+        if (global_best.getScore() < p.position.getScore()) {
+            global_best = new Point(p.position.getVectorCopy());
+        }}
     }
 
     public static int getN() {
