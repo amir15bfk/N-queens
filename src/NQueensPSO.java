@@ -128,6 +128,13 @@ class Point {
         }
         this.setVector(vector);
     }
+    public Point(int size, int max,int norm) {
+        this.vector = new int[size];
+        for (int i = 0; i < max; i++) {
+            this.vector[i] = (int) (Math.random() * max);
+        }
+        this.setVector(vector);
+    }
 
     public Point(int[] vector) {
         this.setVector(vector);
