@@ -21,19 +21,19 @@ public class NQueensGUI extends JFrame {
     public NQueensGUI() {
         setTitle("N-Queens Solver");
         setSize(700, 500);
+        
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel topPanel = new JPanel();
-        topPanel.setLayout(new FlowLayout());
+        topPanel.setLayout(new GridLayout(1, 6));
+        topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        int marginSize = 10;
-        topPanel.setBorder(BorderFactory.createEmptyBorder(marginSize, marginSize, marginSize, marginSize));
-
-        topPanel.add(new JLabel("N: "));
+        topPanel.add(new JLabel("<html><b>Board Size:</b></html>"));
 
         Integer[] sizes = { 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 20, 30 };
-        sizeComboBox = new JComboBox<>(sizes);
+        JComboBox<Integer> sizeComboBox = new JComboBox<>(sizes);
+        sizeComboBox.setToolTipText("Select the size of the board (number of queens)");
         sizeComboBox.setSelectedItem(N);
         sizeComboBox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -44,8 +44,7 @@ public class NQueensGUI extends JFrame {
             }
         });
         topPanel.add(sizeComboBox);
-        topPanel.add(new JLabel("algo: "));
-
+        topPanel.add(new JLabel("<html><b>Search Algorithm:</b></html>")); 
         String[] algo = { "DFS", "BFS", "A* h1", "A* h2","GA", "PSO" };
         algoComboBox = new JComboBox<>(algo);
         algoComboBox.addActionListener(new ActionListener() {
@@ -54,7 +53,7 @@ public class NQueensGUI extends JFrame {
             }
         });
         topPanel.add(algoComboBox);
-        topPanel.add(new JLabel("log: "));
+        topPanel.add(new JLabel("      log: "));
         c1 = new JCheckBox();
         topPanel.add(c1);
         startButton = new JButton("Start");
@@ -86,7 +85,7 @@ public class NQueensGUI extends JFrame {
 
         boardPanel = new JPanel();
         boardPanel.setLayout(new GridLayout(N, N));
-        marginSize = 10;
+        int marginSize = 10;
         boardPanel.setBorder(BorderFactory.createEmptyBorder(marginSize, marginSize, marginSize, marginSize));
         progressBar = new JProgressBar(0, 100);
         // Set the progress bar to indeterminate mode
@@ -101,9 +100,11 @@ public class NQueensGUI extends JFrame {
         statsLabel = new JLabel();
         statsLabel.setHorizontalAlignment(JLabel.CENTER);
         statsLabel.setVerticalAlignment(JLabel.CENTER);
+        statsLabel.setPreferredSize(new Dimension(180, 200));
         updateStats(" welcome <br> chose a problem size <br> and the search technique");
         add(statsLabel, BorderLayout.EAST);
         statsLabel.setMaximumSize(new Dimension(200, 200));
+
     }
 
     private void createBoardPanel() {
