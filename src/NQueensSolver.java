@@ -31,7 +31,7 @@ public class NQueensSolver {
         }
         if (algo == "PSO") {
             NQueensPSO pso_solver = new NQueensPSO(this.N, 100);
-            this.board = pso_solver.run(10000);
+            this.board = pso_solver.run(1000);
             System.out.println(Arrays.toString(board) + pso_solver.getState());
             return new Sol(pso_solver.getState(), board);
         }

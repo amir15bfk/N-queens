@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -8,7 +10,7 @@ public class NQueensGUI extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private int N = 8;
-    private String algoselect = "DFS";
+    private String algoselect = "GA";
     private JButton startButton;
     private JComboBox<Integer> sizeComboBox;
     private JComboBox<String> algoComboBox;
@@ -44,8 +46,10 @@ public class NQueensGUI extends JFrame {
             }
         });
         topPanel.add(sizeComboBox);
-        topPanel.add(new JLabel("<html><b>Search Algorithm:</b></html>")); 
-        String[] algo = { "DFS", "BFS", "A* h1", "A* h2","GA", "PSO" };
+        JLabel sal = new JLabel("<html><b>Search Algorithm:</b></html>");
+        sal.setBorder(new EmptyBorder(0,10,0,0));
+        topPanel.add(sal); 
+        String[] algo = { "GA", "PSO","DFS", "BFS", "A* h1", "A* h2" };
         algoComboBox = new JComboBox<>(algo);
         algoComboBox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -186,16 +190,16 @@ public class NQueensGUI extends JFrame {
         revalidate();
         repaint();
     }
-
-    public static void main(String[] args) {
-        NQueensGUI gui = new NQueensGUI();
-        gui.setVisible(true);
-    }
-
     public void updateStats(String data) {
         statsLabel.setText(
                 "<html><div style='text-align: center;font-size: large;font-family: \"Courier New\", Courier, monospace;color: #f93a3a;background-color: #fee373;padding: 10px;width: 100%;display: block;margin:10px;'>"
                         + data + "</div></html>");
     }
+    public static void main(String[] args) {
+        NQueensGUI gui = new NQueensGUI();
+        gui.setVisible(true);
+    }
+
+    
 
 }

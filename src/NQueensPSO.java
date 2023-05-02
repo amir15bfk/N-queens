@@ -72,7 +72,7 @@ class Particale {
         list_of_particales.add(this);
         this.position = new Point(N, N);
         this.private_best = new Point(this.position.getVectorCopy());
-        this.velocities = new Point(N, (int) (N / 2));
+        this.velocities = new Point(N, (int) (N/ 4),(int) (N / 8));
     }
 
     public static void updateAll() {
@@ -131,7 +131,7 @@ class Point {
     public Point(int size, int max,int norm) {
         this.vector = new int[size];
         for (int i = 0; i < max; i++) {
-            this.vector[i] = (int) (Math.random() * max);
+            this.vector[i] = (int) (Math.random() * max-norm);
         }
         this.setVector(vector);
     }

@@ -26,6 +26,7 @@ list_N,list_rates,minlist,maxlist = readratefile("ga_sr1.log")
 
 fig, ax = plt.subplots()
 ax.fill_between([0]+list_N,[1]+list_rates,[0]*len(list_N)+[0], alpha=.5, linewidth=0)
+ax.fill_between([0]+list_N,[1]+list_rates,[1]*len(list_N)+[1], alpha=.5, linewidth=0)
 
 ax.fill_between(list_N,minlist,maxlist, alpha=.5, linewidth=0)
 ax.plot(list_N,list_rates, linewidth=2)
