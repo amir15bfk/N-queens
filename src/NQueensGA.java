@@ -12,7 +12,7 @@ public class NQueensGA {
         while (Individual.getBest().getFitness() != Individual.getMaxFitness() && iter < Individual.maxGenerations) {
             Individual.updateAll();
             iter++;
-            System.out.println("generation : "+iter+"  size:"+Individual.population.size());
+            //System.out.println("generation : "+iter+"  size:"+Individual.population.size());
         }
         return Individual.getBest().getChromosome();
     }

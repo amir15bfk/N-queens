@@ -24,14 +24,14 @@ public class NQueensSolver {
             r = aStar(2);
         }
         if (algo == "GA") {
-            NQueensGA GA_solver = new NQueensGA(this.N, 1000,0.5,0.03,40);
+            NQueensGA GA_solver = new NQueensGA(this.N, 1000,0.5,0.03,4000);
             this.board = GA_solver.run();
             System.out.println(Arrays.toString(board) + GA_solver.getState());
             return new Sol(GA_solver.getState(), board);
         }
         if (algo == "PSO") {
-            NQueensPSO pso_solver = new NQueensPSO(this.N, 100);
-            this.board = pso_solver.run(1000);
+            NQueensPSO pso_solver = new NQueensPSO(this.N, 1000);
+            this.board = pso_solver.run(500);
             System.out.println(Arrays.toString(board) + pso_solver.getState());
             return new Sol(pso_solver.getState(), board);
         }

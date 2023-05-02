@@ -2,14 +2,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class NQueensTest {
-    public static void testRate(String filename){
+    public static void testRate(String filename,String algo){
         NQueensSolver solver;
         Sol sol;
         Integer[] sizes = { 4, 8, 10, 12, 15, 20, 30,50,70,100};
         FileWriter fw;
         for(int N: sizes){
         solver = new NQueensSolver(N);
-        sol = solver.solve("GA");
+        sol = solver.solve(algo);
         try {
             // true for append mode
             fw = new FileWriter(filename, true);
@@ -21,7 +21,7 @@ public class NQueensTest {
         }}
     }
     public static void main(String []args){
-        for(int i=0;i<15;i++){
-        testRate("ga_sr1.log");}
+        for(int i=0;i<10;i++){
+        testRate("ga_sr2.log","GA");}
     }
 }

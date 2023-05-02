@@ -5,7 +5,7 @@ def readratefile(path):
     with open(path,"r") as f:
         file=f.readlines()
     list_rates,minlist,maxlist=[],[],[]
-    list_N=[4,8,10,12,15,20,30,50]
+    list_N=[4,8,10,12,15,20,30,50,70,100]
     d ={}
     for i in list_N:
         d[i]=[]
@@ -22,7 +22,7 @@ def readratefile(path):
         maxlist.append(np.max(d[n])/n)
     return list_N,list_rates,minlist,maxlist
 
-list_N,list_rates,minlist,maxlist = readratefile("ga_sr1.log")
+list_N,list_rates,minlist,maxlist = readratefile("ga_sr2.log")
 
 fig, ax = plt.subplots()
 ax.fill_between([0]+list_N,[1]+list_rates,[0]*len(list_N)+[0], alpha=.5, linewidth=0)

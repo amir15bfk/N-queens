@@ -33,7 +33,7 @@ public class NQueensGUI extends JFrame {
 
         topPanel.add(new JLabel("<html><b>Board Size:</b></html>"));
 
-        Integer[] sizes = { 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 20, 30 };
+        Integer[] sizes = { 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 20, 30 ,50,100};
         JComboBox<Integer> sizeComboBox = new JComboBox<>(sizes);
         sizeComboBox.setToolTipText("Select the size of the board (number of queens)");
         sizeComboBox.setSelectedItem(N);
